@@ -3,6 +3,7 @@ package potterpg.data;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import potterpg.core.entidades.Pergunta;
 
@@ -11,9 +12,9 @@ public class PerguntaData implements IPerguntaData	{
 	String path = "C:\\Users\\conta\\Documents\\projetos\\java\\potterpg-refatorado\\src\\potterpg\\bases\\PerguntaBase.csv";
 	
 	@Override
-	public LinkedHashSet<Pergunta> buscarTodasPerguntas() {
+	public ArrayList<Pergunta> buscarTodasPerguntas() {
 		
-		LinkedHashSet<Pergunta> lista = new LinkedHashSet<Pergunta>();		
+		ArrayList<Pergunta> lista = new ArrayList<Pergunta>();		
 		
 		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
 			

@@ -1,4 +1,4 @@
-package potterpg.core.regras;
+package potterpg.core.regras.interfaces;
 
 import java.util.ArrayList;
 

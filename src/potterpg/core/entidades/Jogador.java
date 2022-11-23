@@ -15,6 +15,9 @@ public class Jogador {
 		this.pontuacao = pontuacao;
 		this.dataDeCriacao = dataDeCriacao;		
 	}
+	public Jogador() {
+		
+	}
 	
 	public Jogador(String nome) {
 		
@@ -47,6 +50,5 @@ public class Jogador {
 	@Override
 	public String toString() {
 		return "Jogador [nome=" + nome + ", pontuacao=" + pontuacao + ", dataDeCriacao=" + dataDeCriacao + "]";
-	}
-	
+	}	
 }

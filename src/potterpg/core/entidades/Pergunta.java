@@ -1,7 +1,5 @@
 package potterpg.core.entidades;
 
-import java.util.Arrays;
-
 public class Pergunta {
 
 	int cod_OrdemDeChamada;
@@ -23,16 +21,38 @@ public class Pergunta {
 		this.alternativas = alternativas;
 		this.alternativaCorreta = alternativaCorreta;
 	}
+	public Pergunta() {
+		
+	}
 
 	@Override
 	public String toString() {
 		return "cod_OrdemDeChamada = " + cod_OrdemDeChamada 
-				+ "\ncod_Capitulo = " + cod_Capitulo
-				+ "\nnivelDeDificuldade = " + nivelDeDificuldade 
-				+ "\npontos = " + pontos
-				+ "\nConteudo = " + conteudoPergunta
-				+ "\nalternativas = "
-				+ Arrays.toString(alternativas) 
-				+ "\nalternativaCorreta = " + alternativaCorreta;
-	}	
+				+ "\ncod_Capitulo = " + cod_Capitulo;
+			
+	}
+
+	public String toString(int i) {
+		return "cod_OrdemDeChamada = " + cod_OrdemDeChamada 
+				+ "\ncod_Capitulo = " + cod_Capitulo;
+	}
+
+	public int getCod_Capitulo() {
+		return cod_Capitulo;
+	}
+	public int getNivelDeDificuldade() {
+		return nivelDeDificuldade;
+	}
+	public int getPontos() {
+		return pontos;
+	}
+	public String getConteudoPergunta() {
+		return conteudoPergunta;
+	}
+	public String[] getAlternativas() {
+		return alternativas;
+	}
+	public String getAlternativaCorreta() {
+		return alternativaCorreta;
+	}		
 }

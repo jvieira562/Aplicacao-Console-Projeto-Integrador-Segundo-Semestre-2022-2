@@ -1,10 +1,36 @@
 package potterpg.core.entidades;
 
-import java.util.LinkedHashSet;
+import java.util.ArrayList;
 
 public class Capitulo {
 
-	int cod_Capitulo;
-	LinkedHashSet<Pergunta> listaPergunta = new LinkedHashSet<Pergunta>();
+	private int cod_Capitulo;
+	private ArrayList<Pergunta> listaPergunta = new ArrayList<Pergunta>();
+	public Capitulo(int cod_Capitulo) {
+		this.cod_Capitulo = cod_Capitulo;
+	}
+	public int getCod_Capitulo() {
+		return cod_Capitulo;
+	}
 	
+	public ArrayList<Pergunta> getListaPergunta() {
+		return listaPergunta;
+	}
+	public boolean addPerguntaNaLista(Pergunta p) {
+		int tamanho = listaPergunta.size();
+		boolean status = false;
+		listaPergunta.add(p);
+		if(listaPergunta.size() > tamanho) {
+			status = true;
+		}
+		return status;
+	}
+
+	@Override
+	public String toString() {
+		return "Codigo Capitulo: " + cod_Capitulo
+				+ "\nPerguntas: " + listaPergunta.toString();
+	}
+	
+
 }

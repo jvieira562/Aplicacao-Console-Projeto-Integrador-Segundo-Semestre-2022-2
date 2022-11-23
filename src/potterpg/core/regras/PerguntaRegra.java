@@ -1,18 +1,24 @@
 package potterpg.core.regras;
 
-import java.util.LinkedHashSet;
+import java.util.ArrayList;
 
 import potterpg.core.entidades.Pergunta;
-
+import potterpg.core.regras.interfaces.IGerenico;
+import potterpg.core.regras.interfaces.IPerguntaRegra;
+import potterpg.data.IPerguntaData;
 import potterpg.data.PerguntaData;
 
-public class PerguntaRegra implements IPerguntaRegra	{
-
-	private PerguntaData data = new PerguntaData();
+public class PerguntaRegra implements IPerguntaRegra {	
+	
+	private IPerguntaData _pData;
+	
+	public PerguntaRegra() {
+		_pData = new PerguntaData();
+	}
 	
 	@Override
-	public LinkedHashSet<Pergunta> buscarTodasPerguntas() {
+	public ArrayList<Pergunta> buscarTodasPerguntas() {
 		
-		return data.buscarTodasPerguntas();
+		return _pData.buscarTodasPerguntas();
 	}	
 }

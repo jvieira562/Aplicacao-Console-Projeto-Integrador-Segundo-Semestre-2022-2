@@ -1,6 +1,6 @@
 package potterpg;
 
-import potterpg.console.helpers.FluxoConsoleRegra;
+import potterpg.console.fluxos.FluxoPrincipal;
 import potterpg.core.regras.PerguntaRegra;
 
 public class TesteStart {
@@ -11,7 +11,7 @@ public class TesteStart {
 //		PerguntaRegra pregra = new PerguntaRegra();
 //		pregra.buscarTodasPerguntas();
 		
-		FluxoConsoleRegra regra = new FluxoConsoleRegra();
+		FluxoPrincipal regra = new FluxoPrincipal();
 		
 		regra.start();
 	}

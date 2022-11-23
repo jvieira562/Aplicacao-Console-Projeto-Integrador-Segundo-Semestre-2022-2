@@ -1,20 +1,29 @@
-package potterpg.console.helpers;
+package potterpg.console.fluxos;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import potterpg.containers.ContainerDI;
+import potterpg.core.entidades.Capitulo;
 import potterpg.core.entidades.Jogador;
+import potterpg.core.entidades.Pergunta;
 import potterpg.core.regras.JogadorRegra;
+import potterpg.core.regras.interfaces.IJogadorRegra;
 
-public class FluxoConsoleRegra {
+public class FluxoPrincipal {
 
 	Scanner entrada = new Scanner(System.in);
-	JogadorRegra jogadorRegra = new JogadorRegra();
+	IJogadorRegra _jRegra;
+	ContainerDI cdi = new ContainerDI();
+
+	public FluxoPrincipal() {
+		_jRegra = cdi.getDependencia(_jRegra);
+	}
 
 	public boolean validaopcoesMenu(int opcao) {
 
 		boolean status = false;
-		
+
 		if (opcao >= 1 & opcao <= 4) {
 			switch (opcao) {
 
@@ -37,32 +46,35 @@ public class FluxoConsoleRegra {
 			case 4: {
 				sair();
 				break;
-				
+
 			}
 
 			}
-			
+
 			status = true;
-			
+
 		} else {
 			System.out.println("OPÇÃO INVALIDA!" + opcao);
 			leiaInstrucoes();
 		}
 		return status;
 	}
+
 	public void start() {
 
 		int opcao = apresentarMenu();
 		boolean status = validaopcoesMenu(opcao);
 	}
+
 	public int apresentarMenu() {
 		System.out.println("########################## MENU ##########################");
 		System.out.print("\n1 - Jogar\n2 - Ranking\n3 - Instruções\n4 - Sair\nR: ");
 		return entrada.nextInt();
 	}
+
 	public void exibirRank() {
 
-		ArrayList<Jogador> jogadores = jogadorRegra.buscarTodosJogadores();
+		ArrayList<Jogador> jogadores = _jRegra.buscarTodosJogadores();
 		System.out.println("\n########################## RANK ##########################");
 		System.out.println("## NOME\t\t\t | PONTUAÇÃO\t | ÚLTIMO JOGO\t##");
 		System.out.println("##\t\t\t\t\t\t\t##");
@@ -74,6 +86,7 @@ public class FluxoConsoleRegra {
 		System.out.println("##########################################################\n\n");
 		continuarJogando();
 	}
+
 	public void continuarJogando() {
 
 		int opcaoConvertida = 0;
@@ -95,17 +108,31 @@ public class FluxoConsoleRegra {
 		}
 		if (!(opcaoConvertida >= 1 & opcaoConvertida <= 2)) {
 			leiaInstrucoes();
-		} else if(opcaoConvertida == 1) {
+		} else if (opcaoConvertida == 1) {
 			start();
 		} else {
 			sair();
 		}
 	}
+
 	public void leiaInstrucoes() {
 		System.err.print("\n\nNÃO SEJA DELINQUENTE. LEIA AS INSTRUÇÕES!");
 	}
+
 	public void sair() {
 		System.out.println("\nATÉ MAIS! ... by POTTERPG");
 		System.exit(0);
 	}
+
+	public void rodarCapitulo() {
+
+	}
+
+	private void apresentarCapitulo1(Capitulo capitulo) {
+
+	}
+
+
+
+
 }

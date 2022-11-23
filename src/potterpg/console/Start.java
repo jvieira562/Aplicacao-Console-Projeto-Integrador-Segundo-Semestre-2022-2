@@ -1,17 +1,17 @@
 package potterpg.console;
 
-import potterpg.core.regras.PerguntaRegra;
+import potterpg.console.fluxos.FluxoPrincipal;
+import potterpg.core.regras.CapituloRegra;
+import potterpg.core.regras.interfaces.ICapituloRegra;
 
 public class Start {
 	
+	static ICapituloRegra _cRegra = new CapituloRegra();;
+	
 	public static void main(String[] args) {
-//		JogadorRegra regra = new JogadorRegra();
-//		regra.buscarTodosJogadores();
-		PerguntaRegra pregra = new PerguntaRegra();
-		pregra.buscarTodasPerguntas();
 		
-//		FluxoConsoleRegra regra = new FluxoConsoleRegra();
-//		regra.start();
+		FluxoPrincipal regra = new FluxoPrincipal();
+		regra.start();
 	}
 
 }
