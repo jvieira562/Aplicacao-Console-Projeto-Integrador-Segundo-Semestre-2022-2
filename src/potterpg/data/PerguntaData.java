@@ -39,9 +39,6 @@ public class PerguntaData implements IPerguntaData	{
 				linha = br.readLine();
 				
 			}
-//			for(Pergunta p : lista) {
-//				System.out.println(p);
-//			}
 			
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
