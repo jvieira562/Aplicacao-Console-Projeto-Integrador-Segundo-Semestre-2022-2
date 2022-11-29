@@ -2,28 +2,34 @@ package potterpg.core.regras;
 
 import java.util.ArrayList;
 
+import potterpg.containers.ContainerDI;
 import potterpg.core.entidades.Jogador;
-import potterpg.core.regras.interfaces.IGerenico;
 import potterpg.core.regras.interfaces.IJogadorRegra;
-import potterpg.data.JogadorData;
+import potterpg.data.IJogadorData;
 
 public class JogadorRegra implements IJogadorRegra {
 
-	JogadorData data = new JogadorData();
+	IJogadorData _JData;
+	ContainerDI cdi = new ContainerDI();
+	
+	public JogadorRegra() {
+		
+		_JData = cdi.getDependencia(_JData);
+	}
 
 	@Override
 	public boolean salvarJogador(Jogador jogador) {
 		boolean status = false;
-
-		if (!(jogador != null)) {
-
+		
+		if (jogador != null) {
+			status = _JData.SalvarJogador(jogador);
 		}
 		return status;
 	}
 
 	@Override
 	public ArrayList<Jogador> buscarTodosJogadores() {
-		return bubbleSortParaJogadores(data.buscarTodosJogadores());
+		return bubbleSortParaJogadores(_JData.buscarTodosJogadores());
 	}
 	private ArrayList<Jogador> bubbleSortParaJogadores(ArrayList<Jogador> jogadores) {
 

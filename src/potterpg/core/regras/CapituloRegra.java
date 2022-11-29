@@ -26,6 +26,8 @@ public class CapituloRegra implements ICapituloRegra, IGerenico {
 	
 	public ArrayList<Capitulo> buscarCapitulos() {
 		ArrayList<Capitulo> capitulos = selectionSortParaCapitulos();
+		for(Capitulo c : capitulos) {
+		}
 		return capitulos;
 	}
 
@@ -61,19 +63,23 @@ public class CapituloRegra implements ICapituloRegra, IGerenico {
 
 		ArrayList<Pergunta> perguntas = _pRegra.buscarTodasPerguntas();
 		ArrayList<Capitulo> capitulos = new ArrayList<Capitulo>();
-
-		for (Pergunta p : perguntas) {
-			if (p.getCod_Capitulo() == capitulo1.getCod_Capitulo()) {
-				capitulo1.addPerguntaNaLista(p);
-			} else if (p.getCod_Capitulo() == capitulo2.getCod_Capitulo()) {
-				capitulo2.addPerguntaNaLista(p);
-			} else if (p.getCod_Capitulo() == capitulo3.getCod_Capitulo()) {
-				capitulo3.addPerguntaNaLista(p);
-			} else if (p.getCod_Capitulo() == capitulo4.getCod_Capitulo()) {
-				capitulo4.addPerguntaNaLista(p);
+		if(capitulo1.getListaPergunta().size() == 0) {
+			for (Pergunta p : perguntas) {
+				if (p.getCod_Capitulo() == capitulo1.getCod_Capitulo()) {
+					capitulo1.addPerguntaNaLista(p);
+					
+				} else if (p.getCod_Capitulo() == capitulo2.getCod_Capitulo()) {
+					capitulo2.addPerguntaNaLista(p);
+					
+				} else if (p.getCod_Capitulo() == capitulo3.getCod_Capitulo()) {
+					capitulo3.addPerguntaNaLista(p);
+					
+					
+				} else if (p.getCod_Capitulo() == capitulo4.getCod_Capitulo()) {
+					capitulo4.addPerguntaNaLista(p);					
+				}
 			}
 		}
-
 		capitulos.add(capitulo1);
 		capitulos.add(capitulo2);
 		capitulos.add(capitulo3);

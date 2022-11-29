@@ -7,22 +7,26 @@ public class Jogador {
 	
 	private String nome;
 	private double pontuacao;
+	private String modoDeJogo;
 	private String dataDeCriacao;
+	private int vida;
 
-	public Jogador(String nome, double pontuacao, String dataDeCriacao) {
+	public Jogador(String nome, double pontuacao,String modoDeJogo, String dataDeCriacao) {
 		
 		this.nome = nome;
 		this.pontuacao = pontuacao;
+		this.modoDeJogo = modoDeJogo;
 		this.dataDeCriacao = dataDeCriacao;		
 	}
 	public Jogador() {
-		
+		SimpleDateFormat dataFormatada = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		this.dataDeCriacao = dataFormatada.format(new Date());
 	}
 	
 	public Jogador(String nome) {
 		
 		this.nome = nome;
-		SimpleDateFormat dataFormatada = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		SimpleDateFormat dataFormatada = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		this.dataDeCriacao = dataFormatada.format(new Date());
 	}
 
@@ -45,10 +49,22 @@ public class Jogador {
 	public String getDataDeCriacao() {
 		return dataDeCriacao;
 	}
-
-
+	public int getVida() {
+		return vida;
+	}
+	public void setVida(int vida) {
+		this.vida = vida;
+	}
+	public String getModoDeJogo() {
+		return modoDeJogo;
+	}
+	public void setModoDeJogo(String modoDeJogo) {
+		this.modoDeJogo = modoDeJogo;
+	}
 	@Override
 	public String toString() {
-		return "Jogador [nome=" + nome + ", pontuacao=" + pontuacao + ", dataDeCriacao=" + dataDeCriacao + "]";
-	}	
+		return "Jogador [nome=" + nome + ", pontuacao=" + pontuacao + ", modoDeJogo=" + modoDeJogo + ", dataDeCriacao="
+				+ dataDeCriacao + ", vida=" + vida + "]";
+	}
+	
 }

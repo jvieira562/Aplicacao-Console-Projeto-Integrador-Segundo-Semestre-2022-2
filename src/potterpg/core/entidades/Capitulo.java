@@ -10,11 +10,11 @@ public class Capitulo {
 		this.cod_Capitulo = cod_Capitulo;
 	}
 	public int getCod_Capitulo() {
-		return cod_Capitulo;
+		return this.cod_Capitulo;
 	}
 	
 	public ArrayList<Pergunta> getListaPergunta() {
-		return listaPergunta;
+		return this.listaPergunta;
 	}
 	public boolean addPerguntaNaLista(Pergunta p) {
 		int tamanho = listaPergunta.size();

@@ -3,7 +3,6 @@ package potterpg.core.regras;
 import java.util.ArrayList;
 
 import potterpg.core.entidades.Pergunta;
-import potterpg.core.regras.interfaces.IGerenico;
 import potterpg.core.regras.interfaces.IPerguntaRegra;
 import potterpg.data.IPerguntaData;
 import potterpg.data.PerguntaData;

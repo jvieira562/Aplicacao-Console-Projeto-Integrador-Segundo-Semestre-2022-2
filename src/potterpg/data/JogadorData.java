@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.opencsv.CSVWriter;
 import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
@@ -21,7 +22,6 @@ public class JogadorData implements IJogadorData {
 	public boolean SalvarJogador(Jogador jogador) {
 
 		boolean status = false;
-
 		if (jogador != null) {
 			ArrayList<Jogador> listaDeJogadores = buscarTodosJogadores();
 			listaDeJogadores.add(jogador);
@@ -44,13 +44,14 @@ public class JogadorData implements IJogadorData {
 
 			while (linha != null) {
 
-				String dados[] = linha.split(";");
+				String dados[] = linha.split(",");
 
-				String nome = dados[0];
-				double pontuacao = Double.parseDouble(dados[1]);
-				String dataDeCriacao = dados[2];
+				String nome = dados[0].replaceAll("\"", " ");
+				double pontuacao = Double.parseDouble(dados[1].replaceAll("\"", ""));
+				String mododeJogo = dados[2].replaceAll("\"", "");
+				String dataDeCriacao = dados[3].replaceAll("\"", "");
 
-				Jogador jogador = new Jogador(nome, pontuacao, dataDeCriacao);
+				Jogador jogador = new Jogador(nome, pontuacao, mododeJogo, dataDeCriacao);
 				lista.add(jogador);
 
 				linha = br.readLine();
@@ -65,14 +66,26 @@ public class JogadorData implements IJogadorData {
 	}
 
 	private void salvarListaDeJogadores(ArrayList<Jogador> lista) {
-
+		
+		ArrayList<String[]> listaParaCsv = new ArrayList<String[]>();
+		listaParaCsv.add(new String[] { "Nome", "Pontuacão", "ModoDeJogo", "DataDeCriacao" });
+		
 		try (FileWriter fw = new FileWriter(path);) {
 			
-			StatefulBeanToCsv beanToCsv = new StatefulBeanToCsvBuilder(fw).build();
-			beanToCsv.write(lista);
+			CSVWriter writer = new CSVWriter(fw);
+			System.out.println("chegou aqui");
+			for(Jogador j : lista) {
+				
+				String nome = j.getNome().replace("\"", "");
+				String pontuacao = String.valueOf(j.getPontuacao()).replace("\"", "");
+				String modo = j.getModoDeJogo().replace("\"", "")  + " ";
+				String data = String.valueOf(j.getDataDeCriacao()).replace("\"", "");
+				listaParaCsv.add(new String[] { nome, pontuacao, modo, data });
+			}
+			writer.writeAll(listaParaCsv);
 			fw.close();
 
-		} catch (IOException | CsvDataTypeMismatchException | CsvRequiredFieldEmptyException e) {
+		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
 	}
